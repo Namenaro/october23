@@ -2,6 +2,8 @@ import base64
 import os.path
 from io import BytesIO
 import matplotlib.pyplot as plt
+from pandas import DataFrame
+import numpy as np
 
 class HtmlLogger:
     def __init__(self, name, dir_path=None):
@@ -36,6 +38,11 @@ class HtmlLogger:
         with open(filename, 'w') as f:
             f.write(self.html)
 
+    def add_dataframe(self, df):
+        table = df.to_html(index=False, classes='table table-striped', border="0", float_format="{:,.2f}".format)
+        styled_table = table.replace('<th>', '<th style = "background-color: #FDEBD0; border: 8px solid #dddddd; padding: 10px; ">')
+        self.add_text(styled_table)
+
 
 if __name__ == '__main__':
     def draw_smth():
@@ -55,3 +62,8 @@ if __name__ == '__main__':
 
     log.add_line_little()
     log.add_text("1111111")
+
+    df = DataFrame({'foo1': np.random.randn(2),
+                    'foo2': np.random.randn(2)})
+
+    log.add_dataframe(df)

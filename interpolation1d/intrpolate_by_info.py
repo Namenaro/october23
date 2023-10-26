@@ -61,5 +61,6 @@ class Interpolator:
 
         for name, u in self.names_to_coords.items():
             ax.scatter(u, pointwise_prediction[u], c=color)
+            ax.annotate(str(name), (u, pointwise_prediction[u]), xytext=(5, 2), c=color, textcoords='offset points',  weight='bold')
         plt.legend()
 
