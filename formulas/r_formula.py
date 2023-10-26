@@ -10,12 +10,22 @@ class RObject:
         self.best_ii = best_ii
 
     def to_dataframe(self):
-        data = {'col_1': [3], 'col_2':['a']}
+        err_before = self.get_err_before()
+
+        data = {'ошибка до': [err_before], 'col_2':['a']}
         df = DataFrame.from_dict(data)
-        log = HtmlLogger("rrrrrrrrrr")
-        log.add_dataframe(df)
         return df
 
+    def get_err_before(self):
+        err = sum(list([abs(v) for v in self.signal]))
+        return err
 
-r = RObject(0,0,0,0)
-r.to_dataframe()
+
+
+
+
+r = RObject([6,6,-6],0,0,0)
+df = r.to_dataframe()
+
+log = HtmlLogger("rrrrrrrrrr")
+log.add_dataframe(df)

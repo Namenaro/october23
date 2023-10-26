@@ -40,7 +40,9 @@ class HtmlLogger:
 
     def add_dataframe(self, df):
         table = df.to_html(index=False, classes='table table-striped', border="0", float_format="{:,.2f}".format)
-        styled_table = table.replace('<th>', '<th style = "background-color: #FDEBD0; border: 8px solid #dddddd; padding: 10px; ">')
+        styled_table = table.replace('<th>', '<th style = "background-color: #b11a21; padding: 10px; color: #ffe8e8;">')
+        styled_table = styled_table.replace('<tr>',
+                                     '<tr style = "background-color: #ebebeb; color: #e0474c;">')
         self.add_text(styled_table)
 
 
