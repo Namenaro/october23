@@ -19,6 +19,14 @@ class InderpolationInfo:
         self.order.append(name)
         self.names_to_parent_linking[name] = is_linked
 
+    def get_u_by_name(self, name):
+        return self.names_to_points[name].u
+
+    def get_v_by_name(self, name):
+        return self.names_to_points[name].v
+
+
+
 
 
 if __name__ == '__main__':

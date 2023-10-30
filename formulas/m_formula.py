@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def get_m(a_pred, a_real):
-    default_a_pred = 0
-    err_old = abs(a_real - default_a_pred)
+def get_m(a_pred, a_real, old_a_pred=0):
+    err_old = abs(a_real - old_a_pred)
     err_new = abs(a_real - a_pred)
     if err_old == 0:
         if err_new == 0:
